@@ -1,0 +1,14 @@
+#内置的tomacat服务启动监听端口号
+server:
+  port: 8888
+spring:
+  application:
+    name: EurekaServer01
+#应用名称
+#EurekaServer配置
+eureka:
+  client:
+    register-with-eureka: false #此EurekaServer不在注册到其他的注册中心
+    fetch-registry: false    #不在从其他中心拉取服务器信息
+    service-url:
+      defauleZone: http://localhost:${server.port}/eureka #注册中心访问地址
