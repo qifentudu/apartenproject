@@ -22,14 +22,14 @@ public class UserController {
         List<User> list = userService.findAll();
         int i = new Random().nextInt(1500);
         try {
-            System.out.println("程序1：睡眠："+i);
+            System.out.println("程序2：睡眠："+i);
             Thread.sleep(i);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         Map<String, Object> map = new HashMap<>();
         map.put("list",list);
-        map.put("version","UserProvider01");//返回一个版本号，区分服务
+        map.put("version","UserProvider02");//返回一个版本号，区分服务
         return map;
     }
     //获取指定ID用户

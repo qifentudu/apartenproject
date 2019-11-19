@@ -1,0 +1,37 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka,http://localhost:10087/eureka
+spring:
+  application:
+    name: userweb03
+  thymeleaf:
+    cache: false
+    #开启SpringCloud的重试功能
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+server:
+  port: 9003
+USERPROVIDER:
+    ribbon:
+        NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+        # Ribbon 的连接超时时间
+        ConnectTimeout: 250
+        # Ribbon 的数据读取超时时间
+        ReadTimeout: 250
+        # 是否对所有操作都进行重试
+        OkToRetryOnAllOperations: true
+        # 切换实例的重试次数
+        MaxAutoRetriesNextServer: 1
+        # 对当前实例的重试次数
+        MaxAutoRetries: 3
+    #设定Hystrix熔断超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000

@@ -5,11 +5,18 @@
     <modules>
         <module>EurekaServer01</module>
         <module>UserProvdier01</module>
+        <module>UserWeb01</module>
+        <module>EurakaServer02</module>
+        <module>UserProvider02</module>
+        <module>UserWeb02</module>
+        <module>UserWeb03</module>
+        <module>UserWeb04</module>
+        <module>hystrix-dashboard</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.10.RELEASE</version>
+        <version>2.1.9.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.offcn</groupId>
@@ -29,6 +36,10 @@
             <version>Greenwich.RELEASE</version>
             <type>pom</type>
             <scope>import</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.retry</groupId>
+            <artifactId>spring-retry</artifactId>
         </dependency>
     </dependencies>
 </dependencyManagement>
