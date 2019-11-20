@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: zuulgateway
+server:
+  port: 80
+ribbon:
+    ConnectionTimeOut: 1000
+    ReadTimeout: 1000
+    OkToRetryOnAllOperations: true
+    MaxAutoRetriesNextServer: 0
+    MaxAutoRetries: 5
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 9000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka,http://localhost:10087/eureka
+zuul:
+  routes:
+    UserProvider01:
+      path: /user01/**
+      url: http://localhost:8009/
+    UserProvider02:
+      path: /user02/**
+      url: http://localhost:8002/
+    userprovider:
+      path: /service/**
+      service-id: USERPROVIDER
+  retryable: true
+  #打开zuul网关重试

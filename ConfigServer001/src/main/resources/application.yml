@@ -1,0 +1,17 @@
+server:
+  port: 7001
+spring:
+  application:
+    name: configserver
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/qifentudu/java0617-config
+          username: qifentudu
+          password: phone18130739278
+          search-paths: offcn/config-repo #指定要搜索的文件目录
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka,http://localhost:10087/eureka

@@ -3,6 +3,8 @@ package com.offcn.controller;
 import com.offcn.po.User;
 import com.offcn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -11,25 +13,27 @@ import java.util.Map;
 import java.util.Random;
 
 @RestController
+@RefreshScope
 @RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserService userService;
-
+    @Value("${version}")
+private String version;
     //获取全部用户数据
     @GetMapping("/")
     public Map<String,Object> findAall(){
         List<User> list = userService.findAll();
-        int i = new Random().nextInt(1500);
+        int i = new Random().nextInt(12000);
+        System.out.println("程序1：睡眠："+i);
         try {
-            System.out.println("程序1：睡眠："+i);
             Thread.sleep(i);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         Map<String, Object> map = new HashMap<>();
         map.put("list",list);
-        map.put("version","UserProvider01");//返回一个版本号，区分服务
+        map.put("version",version);//返回一个版本号，区分服务
         return map;
     }
     //获取指定ID用户

@@ -3,6 +3,7 @@ package com.offcn.controller;
 import com.offcn.po.User;
 import com.offcn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -12,6 +13,7 @@ import java.util.Random;
 
 @RestController
 @RequestMapping("/user")
+@RefreshScope
 public class UserController {
     @Autowired
     private UserService userService;
@@ -20,9 +22,9 @@ public class UserController {
     @GetMapping("/")
     public Map<String,Object> findAall(){
         List<User> list = userService.findAll();
-        int i = new Random().nextInt(1500);
+        int i = new Random().nextInt(12000);
+        System.out.println("程序2：睡眠："+i);
         try {
-            System.out.println("程序2：睡眠："+i);
             Thread.sleep(i);
         } catch (InterruptedException e) {
             e.printStackTrace();

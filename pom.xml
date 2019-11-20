@@ -12,6 +12,8 @@
         <module>UserWeb03</module>
         <module>UserWeb04</module>
         <module>hystrix-dashboard</module>
+        <module>ConfigServer001</module>
+        <module>ZuulGateWay</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

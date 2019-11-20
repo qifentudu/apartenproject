@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: UserProvider01
+  cloud:
+    config:
+      uri: http://localhost:7001
+      profile: dev
+      label: master
+      discovery:
+        enabled: true
+        service-id: CONFIGSERVER
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka,http://localhost:10087/eureka
